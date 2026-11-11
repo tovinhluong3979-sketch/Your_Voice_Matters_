@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vẻ đẹp của tiếng nói – Những tiếng nói tạo nên thay đổi. Dự án học tập của học sinh Ngữ văn 11.">
+<title>Vẻ đẹp của tiếng nói | Your Voice Matters</title>
+
+<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  --crimson: #9e2a2b;
+  --crimson-soft: #b83b3e;
+  --gold-warm: #d4a373;
+  --gold-bg: #faedcd;
+  --cream-paper: #fdfbf7;
+  --ink-main: #2b2d42;
+  --ink-muted: #5c677d;
+  --white: #ffffff;
+  --border-light: #e6e1d5;
+  --soft-shadow: 0 10px 30px rgba(158, 42, 43, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--cream-paper);
+  color: var(--ink-main);
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+h1, h2, h3, .brand-title, .quote-text {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1140px, calc(100% - 40px)); margin: auto; }
+
+/* Header & Navigation */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--border-light);
+}
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-icon {
+  width: 42px; height: 42px;
+  background: var(--crimson);
+  color: var(--white);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(158, 42, 43, 0.2);
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--crimson);
+  letter-spacing: -0.2px;
+}
+
+.brand-title span {
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+}
+
+nav { display: flex; gap: 24px; align-items: center; }
+nav a {
+  font-size: 0.93rem;
+  color: var(--ink-main);
+  font-weight: 600;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+  background: var(--crimson); transition: width 0.3s ease;
+}
+
+nav a:hover { color: var(--crimson); }
+nav a:hover::after { width: 100%; }
+
+.menu-toggle {
+  display: none; background: none; border: none;
+  font-size: 1.4rem; color: var(--crimson); cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  padding: 70px 0 60px;
+  background: linear-gradient(135deg, #fdfbf7 0%, #faedcd 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--crimson);
+  color: var(--crimson);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+h1 {
+  font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+  line-height: 1.2;
+  margin: 10px 0 20px;
+  color: var(--ink-main);
+  font-weight: 700;
+}
+
+h1 em {
+  color: var(--crimson);
+  font-style: italic;
+  position: relative;
+}
+
+.lead {
+  color: var(--ink-muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  padding: 13px 26px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--crimson);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(158, 42, 43, 0.3);
+}
+
+.btn.primary:hover {
+  background: var(--crimson-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(158, 42, 43, 0.4);
+}
+
+.btn.secondary {
+  background: var(--white);
+  color: var(--crimson);
+  border: 1px solid var(--crimson);
+}
+
+.btn.secondary:hover {
+  background: var(--crimson);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.hero-img-frame {
+  position: relative;
+  border-radius: 16px;
+  padding: 10px;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--soft-shadow);
+}
+
+.hero-img-frame img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.hero-caption {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  right: 20px;
+  background: var(--white);
+  padding: 14px 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--crimson);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-caption i { font-size: 1.4rem; color: var(--crimson); }
+.hero-caption p { margin: 0; font-size: 0.88rem; font-weight: 600; color: var(--ink-main); }
+
+/* Common Section Layout */
+section { padding: 80px 0; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.kicker {
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: var(--crimson);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin: 6px 0 0;
+  color: var(--ink-main);
+  line-height: 1.25;
+}
+
+.section-head p { max-width: 460px; color: var(--ink-muted); margin: 0; font-size: 0.98rem; }
+
+/* Section 1: Intro / Principles */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.quote-box {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  box-shadow: var(--soft-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.quote-inner {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.quote-text {
+  font-size: 1.25rem;
+  color: var(--crimson);
+  line-height: 1.5;
+  margin: 0 0 15px;
+  font-style: italic;
+}
+
+.quote-author {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gold-warm);
+}
+
+.principles { display: flex; flex-direction: column; gap: 16px; }
+
+.principle-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 20px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.principle-card:hover {
+  transform: translateX(6px);
+  border-color: var(--crimson);
+}
+
+.principle-num {
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--crimson);
+  background: var(--gold-bg);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.principle-card p { margin: 0; color: var(--ink-main); font-weight: 600; font-size: 0.96rem; line-height: 1.5; align-self: center; }
+
+/* Section 2: Teams / Topics */
+.teams-bg { background: #f4efe4; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.team-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--soft-shadow);
+}
+
+.team-card-img {
+  position: relative;
+  height: 200px;
+}
+
+.team-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--crimson);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+.team-top { padding: 22px 22px 10px; }
+
+.team-top h3 {
+  font-size: 1.45rem;
+  margin: 0 0 10px;
+  color: var(--crimson);
+}
+
+.team-question {
+  font-weight: 700;
+  color: var(--ink-main);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.team-body {
+  padding: 0 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.team-body p { color: var(--ink-muted); font-size: 0.9rem; line-height: 1.6; }
+
+.tags { margin: 10px 0 16px; }
+
+.tag {
+  display: inline-block;
+  background: var(--gold-bg);
+  color: #724e19;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 14px;
+  margin: 3px 3px 3px 0;
+}
+
+.team-body a {
+  margin-top: auto;
+  color: var(--crimson);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+
+.team-body a:hover { gap: 10px; }
+
+/* Section 3: Project Roadmap */
+.project-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.project-note-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--soft-shadow);
+}
+
+.project-note-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.project-note-content { padding: 28px; }
+
+.project-note-content h3 {
+  font-size: 1.3rem;
+  color: var(--crimson);
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.project-note-content p { color: var(--ink-muted); margin: 0; font-size: 0.95rem; }
+
+.steps { counter-reset: step; }
+
+.step {
+  position: relative;
+  padding: 0 0 30px 58px;
+  border-left: 2px dashed #d6cfc0;
+  margin-left: 18px;
+}
+
+.step:last-child { border-left-color: transparent; }
+
+.step::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--crimson);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(158, 42, 43, 0.3);
+}
+
+.step h3 { margin: 0 0 6px; font-size: 1.1rem; color: var(--ink-main); }
+.step p { margin: 0; color: var(--ink-muted); font-size: 0.92rem; }
+
+/* Section 4: Gallery / Spreading Influence */
+.gallery-bg { background: var(--white); border-top: 1px solid var(--border-light); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gallery-card {
+  background: var(--cream-paper);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-card:hover { transform: translateY(-5px); }
+
+.gallery-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.gallery-card-content { padding: 22px; flex: 1; }
+
+.gallery-symbol {
+  font-family: 'Merriweather', serif;
+  font-size: 1.6rem;
+  color: var(--gold-warm);
+  font-weight: 700;
+}
+
+.gallery-card h3 { margin: 6px 0 10px; font-size: 1.1rem; color: var(--crimson); }
+.gallery-card p { color: var(--ink-muted); font-size: 0.9rem; margin: 0; }
+
+/* Section 5: Submit / Call to Action */
+.submit-bg { background: linear-gradient(135deg, #faedcd 0%, #fdfbf7 100%); }
+
+.submit-box {
+  background: var(--white);
+  padding: 42px;
+  border-radius: 20px;
+  border: 2px solid var(--crimson);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  box-shadow: var(--soft-shadow);
+}
+
+.submit-box h2 { font-size: 2rem; color: var(--crimson); margin-top: 4px; }
+.submit-box p { color: var(--ink-muted); max-width: 580px; font-size: 0.98rem; }
+.note { font-size: 0.84rem; color: var(--ink-muted); font-style: italic; }
+
+/* Footer */
+footer {
+  background: var(--ink-main);
+  color: #d6d9e0;
+  padding: 36px 0;
+  border-top: 3px solid var(--crimson);
+}
+
+footer .foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+footer b { color: var(--white); font-family: 'Merriweather', serif; font-size: 1.05rem; }
+footer small { color: #a0a6b5; }
+
+/* Mobile Responsiveness */
+@media(max-width: 860px) {
+  nav {
+    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    background: var(--cream-paper); padding: 22px; border-bottom: 2px solid var(--border-light);
+    flex-direction: column; align-items: flex-start; gap: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  nav.open { display: flex; }
+  .menu-toggle { display: block; }
+  
+  .hero-grid, .intro-grid, .project-grid { grid-template-columns: 1fr; }
+  .team-grid, .gallery-grid { grid-template-columns: 1fr; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .submit-box { flex-direction: column; align-items: flex-start; padding: 28px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">
+      <div class="brand-icon"><i class="fa-solid fa-comments"></i></div>
+      <div class="brand-title">
+        YOUR VOICE MATTERS
+        <span>VẺ ĐẸP CỦA TIẾNG NÓI</span>
+      </div>
+    </a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Mở trình đơn"><i class="fa-solid fa-bars"></i></button>
+    <nav id="navLinks">
+      <a href="#about">Thông điệp</a>
+      <a href="#teams">Ba tiếng nói</a>
+      <a href="#project">Dự án</a>
+      <a href="#gallery">Lan tỏa</a>
+      <a href="#join">Tham gia</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> DỰ ÁN HỌC TẬP · NÓI VÀ NGHE · NGỮ VĂN 11</div>
+      <h1>Vẻ đẹp của <em>tiếng nói</em></h1>
+      <p class="lead">Những tiếng nói khác biệt cùng gặp nhau để nhìn nhận vấn đề, chia sẻ góc nhìn và khơi nguồn thay đổi tích cực trong cuộc sống.</p>
+      <div class="actions">
+        <a class="btn primary" href="#teams"><i class="fa-solid fa-compass"></i> Khám phá ba chủ đề</a>
+        <a class="btn secondary" href="#project">Tìm hiểu dự án</a>
+      </div>
+    </div>
+    <div class="hero-img-frame">
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Học sinh Việt Nam trong giờ thảo luận">
+      <div class="hero-caption">
+        <i class="fa-solid fa-users"></i>
+        <p>Diễn đàn thảo luận Ngữ văn 11 – Nơi thanh âm trẻ cất lời</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">01 / TINH THẦN DỰ ÁN</div>
+        <h2>Một tiếng nói có thể<br>mở ra nhiều suy nghĩ.</h2>
+      </div>
+      <p>Chúng ta không chỉ học cách trình bày một quan điểm. Chúng ta học cách lắng nghe, kiểm chứng thông tin, tôn trọng khác biệt và biến điều mình tin tưởng thành hành động có trách nhiệm.</p>
+    </div>
+    <div class="intro-grid">
+      <div class="quote-box">
+        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Lớp học tại Việt Nam">
+        <div class="quote-inner">
+          <p class="quote-text">“Nói bằng lí lẽ. Lắng nghe bằng sự tôn trọng. Hành động bằng trách nhiệm.”</p>
+          <span class="quote-author"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i> YOUR VOICE MATTERS</span>
+        </div>
+      </div>
+      <div class="principles">
+        <div class="principle-card">
+          <div class="principle-num">01</div>
+          <p>Quan điểm rõ ràng, có chính kiến và biết đặt vấn đề.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">02</div>
+          <p>Lí lẽ thuyết phục, dẫn chứng đáng tin cậy và được kiểm chứng.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-num">03</div>
+          <p>Đối thoại văn minh, phản biện ý kiến chứ không công kích con người.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: TEAMS / TOPICS -->
+<section class="teams-bg" id="teams">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">02 / BA TIẾNG NÓI</div>
+        <h2>Ba vấn đề – Ba góc nhìn</h2>
+      </div>
+      <p>Mỗi nhóm lựa chọn một vấn đề gần gũi với đời sống học sinh, phát triển quan điểm và đề xuất cách tạo nên thay đổi tích cực.</p>
+    </div>
+    <div class="team-grid">
+      <!-- EKIP 01 -->
+      <article class="team-card">
+        <div class="team-card-img">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Học sinh sử dụng công nghệ số">
+          <span class="team-badge">EKIP 01</span>
+        </div>
+        <div class="team-top">
+          <h3>Digital Generation</h3>
+          <div class="team-question">Mạng xã hội: Kết nối con người hay tạo nên những khoảng cách?</div>
+        </div>
+        <div class="team-body">
+          <p>Từ một lượt chia sẻ, bình luận hay bức ảnh được đăng tải, chúng ta nhìn lại trách nhiệm của mỗi người trong không gian số.</p>
+          <div class="tags">
+            <span class="tag">Ứng xử số</span>
+            <span class="tag">Tin giả</span>
+            <span class="tag">Tôn trọng riêng tư</span>
+          </div>
+          <p><b>Gợi ý sản phẩm:</b> Bản tin học đường, infographic, podcast ngắn hoặc video tình huống.</p>
+          <a href="#join">Xem cách tham gia <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- EKIP 02 -->
+      <article class="team-card">
+        <div class="team-card-img">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Nhóm bạn trẻ cùng học tập">
+          <span class="team-badge">EKIP 02</span>
+        </div>
+        <div class="team-top">
+          <h3>Equal Voices</h3>
+          <div class="team-question">Bình đẳng giới: Có phải mọi định kiến giới đều bắt đầu từ những điều rất nhỏ?</div>
+        </div>
+        <div class="team-body">
+          <p>Từ những lời khen, lời chúc tưởng chừng vô tư, chúng ta nhận diện các khuôn mẫu giới và suy nghĩ về quyền được lựa chọn của mỗi người.</p>
+          <div class="tags">
+            <span class="tag">Định kiến giới</span>
+            <span class="tag">Tôn trọng lựa chọn</span>
+            <span class="tag">Cơ hội bình đẳng</span>
+          </div>
+          <p><b>Gợi ý sản phẩm:</b> Tiểu phẩm đối thoại, video ngắn, bộ thông điệp truyền thông.</p>
+          <a href="#join">Xem cách tham gia <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- EKIP 03 -->
+      <article class="team-card">
+        <div class="team-card-img">
+          <img src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?auto=format&fit=crop&w=600&q=80" alt="Hành động vì môi trường xanh Việt Nam">
+          <span class="team-badge">EKIP 03</span>
+        </div>
+        <div class="team-top">
+          <h3>Green Future</h3>
+          <div class="team-question">Sống xanh: Trào lưu nhất thời hay trách nhiệm của thế hệ trẻ?</div>
+        </div>
+        <div class="team-body">
+          <p>Từ những thói quen hằng ngày, chúng ta cùng bàn về tiêu dùng có trách nhiệm và những hành động thiết thực vì môi trường.</p>
+          <div class="tags">
+            <span class="tag">Tiêu dùng bền vững</span>
+            <span class="tag">Giảm rác thải</span>
+            <span class="tag">Hành động xanh</span>
+          </div>
+          <p><b>Gợi ý sản phẩm:</b> Infographic, thử thách sống xanh, video hoặc nhật kí hành động.</p>
+          <a href="#join">Xem cách tham gia <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: PROJECT ROADMAP -->
+<section id="project">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">03 / TỪ LỜI NÓI ĐẾN HÀNH ĐỘNG</div>
+        <h2>Tiếng nói không dừng<br>lại trên sân khấu.</h2>
+      </div>
+      <p>Sau phần trình bày và phản biện, mỗi ekip tiếp tục phát triển thông điệp thành một sản phẩm truyền thông có thể chia sẻ trong cộng đồng học đường.</p>
+    </div>
+    <div class="project-grid">
+      <div class="project-note-card">
+        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Làm việc nhóm sáng tạo">
+        <div class="project-note-content">
+          <h3>Vẻ đẹp của tiếng nói – Những tiếng nói tạo nên thay đổi</h3>
+          <p>Mục tiêu của dự án là đưa kiến thức và quan điểm đã học vào đời sống. Sản phẩm cần ngắn gọn, chính xác, dễ tiếp cận và khuyến khích một hành động tích cực cụ thể.</p>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Thống nhất thông điệp</h3>
+          <p>Xác định điều nhóm muốn người xem suy nghĩ hoặc thay đổi sau khi tiếp nhận sản phẩm.</p>
+        </div>
+        <div class="step">
+          <h3>Lựa chọn hình thức</h3>
+          <p>Thiết kế infographic, video ngắn, bài viết, podcast hoặc bộ quy tắc hành động phù hợp với chủ đề.</p>
+        </div>
+        <div class="step">
+          <h3>Kiểm chứng và hoàn thiện</h3>
+          <p>Kiểm充 nguồn dẫn, tính chính xác, bản quyền hình ảnh/âm thanh và sự phù hợp của ngôn từ trước khi gửi giáo viên.</p>
+        </div>
+        <div class="step">
+          <h3>Chia sẻ và lan tỏa</h3>
+          <p>Công bố sản phẩm qua kênh được nhà trường/giáo viên cho phép; khuyến khích người xem thực hiện một hành động cụ thể.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: GALLERY -->
+<section class="gallery-bg" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">04 / GÓC LAN TỎA</div>
+        <h2>Mỗi hành động nhỏ,<br>một thay đổi có thật.</h2>
+      </div>
+      <p>Khu vực này dành để đăng tải sản phẩm sau khi được giáo viên kiểm duyệt. Nội dung bên dưới là định hướng để các nhóm phát triển.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=600&q=80" alt="Ứng xử văn minh không gian mạng">
+        <div class="gallery-card-content">
+          <div class="gallery-symbol">01</div>
+          <h3>Think before you share</h3>
+          <p>Kiểm chứng trước khi chia sẻ. Tôn trọng quyền riêng tư. Không tiếp tay cho bình luận gây tổn thương.</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=600&q=80" alt="Tôn trọng cá tính và sự lựa chọn">
+        <div class="gallery-card-content">
+          <div class="gallery-symbol">02</div>
+          <h3>Respect every choice</h3>
+          <p>Không áp đặt khuôn mẫu. Ghi nhận năng lực và cá tính. Chia sẻ trách nhiệm trong học tập và cuộc sống.</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1536939459926-301728717817?auto=format&fit=crop&w=600&q=80" alt="Trồng cây và hành động xanh">
+        <div class="gallery-card-content">
+          <div class="gallery-symbol">03</div>
+          <h3>Start small, live green</h3>
+          <p>Hạn chế đồ dùng một lần. Sử dụng tài nguyên hợp lí. Duy trì thói quen xanh mỗi ngày.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: SUBMIT -->
+<section class="submit-bg" id="join">
+  <div class="wrap">
+    <div class="submit-box">
+      <div>
+        <div class="kicker">05 / CÙNG GÓP TIẾNG NÓI</div>
+        <h2>Bạn muốn bắt đầu từ đâu?</h2>
+        <p>Hãy chọn một vấn đề bạn quan tâm, chia sẻ góc nhìn bằng lí lẽ và dẫn chứng đáng tin cậy, sau đó đề xuất một hành động vừa sức để cùng thực hiện.</p>
+        <p class="note">Đối với học sinh tham gia dự án: gửi sản phẩm cho giáo viên phụ trách theo hướng dẫn của lớp. Chỉ đăng tải hình ảnh, tên và thông tin cá nhân khi đã được cho phép.</p>
+      </div>
+      <a class="btn primary" href="mailto:giaovien@example.com?subject=San%20pham%20du%20an%20Your%20Voice%20Matters"><i class="fa-solid fa-paper-plane"></i> Gửi sản phẩm</a>
+    </div>
+    <p class="note" style="margin-top:16px;">Lưu ý cho giáo viên: thay địa chỉ email mẫu bằng địa chỉ nhận bài chính thức hoặc thay nút này bằng liên kết Google Form/Google Drive của lớp trước khi công bố.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <b><i class="fa-solid fa-feather-pointed" style="color:var(--gold-warm); margin-right:6px;"></i> YOUR VOICE MATTERS</b><br>
+      <small>Vẻ đẹp của tiếng nói · Dự án học tập Ngữ văn 11</small>
+    </div>
+    <small>Speak with reason. Listen with respect. Act with responsibility.</small>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>
